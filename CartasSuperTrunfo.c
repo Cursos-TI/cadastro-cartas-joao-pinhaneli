@@ -8,15 +8,16 @@ int main(){
     char limpeza_buffer[2];
 
     //carta1
-    char estado1[50];       //letra que representa um estado
-    char codigo1[10];       //letra do estado + número da carta
-    char cidade1[50];       //nome da cidade
-    int populacao1;         //estimativa da populacao na data
-    float area1;            //area em km2
-    float pib1;             //PIB da cidade
-    int pontos_tur1;        //numero de pontos turisticos
-    float densidade_pop1;   //densidade populacional
-    float pib_percapta1;    //pib per capta
+    char estado1[50];               //letra que representa um estado
+    char codigo1[10];               //letra do estado + número da carta
+    char cidade1[50];               //nome da cidade
+    unsigned long int populacao1;   //estimativa da populacao na data
+    float area1;                    //area em km2
+    float pib1;                     //PIB da cidade
+    int pontos_tur1;                //numero de pontos turisticos
+    float densidade_pop1;           //densidade populacional
+    float pib_percapta1;            //pib per capta
+    float super1;                   //soma de todos os valores - densidade populacional
 
     //carta2
     char estado2[50];
@@ -28,6 +29,7 @@ int main(){
     int pontos_tur2;
     float densidade_pop2;
     float pib_percapta2;
+    float super2;
 
 
     //cadastro de cartas
@@ -63,6 +65,9 @@ int main(){
 
     //calcular pib per capta
     pib_percapta1 = pib1 / populacao1;
+
+    //calcular super poder
+    super1 = populacao1 + area1 + pib1 + pontos_tur1 + pib_percapta1 + -densidade_pop1;
 
     printf("Carta 1 CONCLUIDA \n");
     printf("\n");
@@ -103,6 +108,9 @@ int main(){
     //calcular pib per capta
     pib_percapta2 = pib2 / populacao2;
 
+    //calcular super poder
+    super2 = populacao2 + area2 + pib2 + pontos_tur2 + pib_percapta2 + -densidade_pop2;
+
     printf("Carta 2 CONCLUIDA \n");
     printf("\n");
     printf("\n");
@@ -113,7 +121,7 @@ int main(){
 
     
     //transicao
-    printf("Gerando Cartas...");
+    printf("-- Gerando Cartas --");
     printf("\n");
     printf("\n");
     printf("\n");
@@ -133,6 +141,7 @@ int main(){
     printf("Pontos Turisticos: %i \n", pontos_tur1);
     printf("Densidade Populacional: %.2f \n", densidade_pop1);
     printf("PIB per Capta: %.2f \n", pib_percapta1);
+    printf("SUPER PODER: %.2f", super1);
     printf("\n");
     printf("\n");
 
@@ -147,8 +156,23 @@ int main(){
     printf("Pontos Turisticos: %i \n", pontos_tur2);
     printf("Densidade Populacional: %.2f \n", densidade_pop2);
     printf("PIB per Capta: %.2f \n", pib_percapta2);
+    printf("SUPER PODER: %.2f", super2);
     printf("\n");
     printf("\n");
+
+    //comparando cartas
+    printf("-- Comparando Cartas --");
+    printf("\n");
+    printf("\n");
+    printf("\n");
+
+    printf("Populacao: %d\n", populacao1 > populacao2);
+    printf("Area (km2): %d\n", area1 > area2);
+    printf("PIB: %d\n", pib1 > pib2);
+    printf("Pontos Turisticos: %d\n", pontos_tur1 > pontos_tur2);
+    printf("Densidade Populacional: %d\n", densidade_pop1 < densidade_pop2);
+    printf("PIB per Capta: %d\n", pib_percapta1 > pib_percapta2);
+    printf("SUPER PODER: %d\n", super1 > super2);
 
     return 0;
     
